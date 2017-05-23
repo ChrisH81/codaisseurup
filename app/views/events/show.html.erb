@@ -3,13 +3,13 @@
 
   <div class="panel-body">
 
-    <p>Address: <%= @event.address %></p>
+    <p>Location: <%= @event.location %></p>
     <p>Host: <%= @event.user.email %></p>
 
     <!-- Main Info -->
     <h4>Main Info</h4>
     <p>Event Price: <%= @event.price %></p>
-    <p><%= @event.capacity %> <%= @event.capacity > 1 ? "Guests" : "Guest" %></p>
+    <p>Capacity: <%= @event.capacity %></p>
 
     <!-- About -->
     <h4>About</h4>
@@ -21,6 +21,11 @@
       <li><%= !@event.includes_food ? ("<s>Food</s>").html_safe : "Food" %></li>
       <li><%= !@event.includes_drinks ? ("<del>Drink</del>").html_safe : "Drink" %></li>
     </ul>
+
+    <h4>Categories</h4>
+      <% @categories.each do |category| %>
+        <span class="label label-success"><%= category %></span>
+      <% end %>
 
   </div>
 
