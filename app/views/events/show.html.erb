@@ -5,7 +5,7 @@
 
     <h4>Main Info</h4>
     <br />
-    <p>Host: <%= @event.user.email %></p>
+    <p>Host: <%= current_user.has_profile? ? current_user.full_name : current_user.email  %></p>
     </p>
     <p>Location: <%= @event.location %></p>
     <p>Event Price: <%= @event.price == 0.0 ? "" : "€" %><%= @event.price == 0.0 ? "Free" : @event.price %></p>

@@ -3,6 +3,7 @@ User.destroy_all
 
 web_development = Category.create!(name: "Web Development")
 fitness = Category.create!(name: "Fitness")
+languages = Category.create!(name: "Languages")
 
 miriam = User.create!(email: "miriam@codaisseurbnb.com", password: "abcd1234")
 
