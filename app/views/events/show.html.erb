@@ -3,28 +3,34 @@
 
   <div class="panel-body">
 
-    <p>Location: <%= @event.location %></p>
-    <p>Host: <%= @event.user.email %></p>
-
-    <!-- Main Info -->
     <h4>Main Info</h4>
-    <p>Event Price: <%= @event.price %></p>
+    <br />
+    <p>Host: <%= current_user.has_profile? ? current_user.full_name : current_user.email  %>
+    </p>
+    <p>Location: <%= @event.location %></p>
+    <p>Event Price: <%= @event.price == 0.0 ? "" : "€" %><%= @event.price == 0.0 ? "Free" : @event.price %></p>
     <p>Capacity: <%= @event.capacity %></p>
 
     <!-- About -->
+    <br />
     <h4>About</h4>
+    <br />
     <p><%= @event.description %></p>
 
+    <br />
     <!-- Amenities -->
     <h4>Amenities</h4>
+    <br />
     <ul class="amenities">
       <li><%= !@event.includes_food ? ("<s>Food</s>").html_safe : "Food" %></li>
       <li><%= !@event.includes_drinks ? ("<del>Drink</del>").html_safe : "Drink" %></li>
     </ul>
 
+    <br />
     <h4>Categories</h4>
+    <br />
       <% @categories.each do |category| %>
-        <span class="label label-success"><%= category %></span>
+        <span class="label label-success"><%= category.name %></span>
       <% end %>
 
   </div>

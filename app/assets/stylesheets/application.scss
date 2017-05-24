@@ -1,5 +1,14 @@
+$navbarBackgroundHighlight: blue; /* This changes the nag background color */
+$navbarText: white; /* This changes the text color */
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+body {
+  background-color: #E8EAF6;
+}
 
 .image_one {
   width: 100%;
@@ -15,4 +24,10 @@
 
 .navbar {
   border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  list-style-type: none;
+   margin: 0;
+   padding: 0;
 }
