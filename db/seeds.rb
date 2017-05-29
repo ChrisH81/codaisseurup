@@ -1,16 +1,44 @@
-Category.destroy_all
-User.destroy_all
+Photo.delete_all
+Category.delete_all
+Event.delete_all
+Profile.delete_all
+User.delete_all
 
-web_development = Category.create!(name: "Web Development")
-fitness = Category.create!(name: "Fitness")
-languages = Category.create!(name: "Languages")
+miriam = User.create!(
+  email: "miriam@codaisseurup.com",
+  password: "abcd1234",
+)
 
-miriam = User.create!(email: "miriam@codaisseurbnb.com", password: "abcd1234")
+photo1 = Photo.create(remote_image_url: "http://res.cloudinary.com/chrish81/image/upload/v1496054537/run_q3fdwh.jpg")
+photo2 = Photo.create(remote_image_url: "http://res.cloudinary.com/chrish81/image/upload/v1496054542/code_jdignt.jpg")
 
-puts "User created"
+event = Event.create!(
+  name: "Monthly Yoga Weekend",
+  description: "Let's come together and practice some asanas together in the woods!",
+  location: "Amsterdam",
+  includes_food: false,
+  includes_drinks: true,
+  price: 10.00,
+  starts_at: 10.days.from_now,
+  ends_at: 12.days.from_now,
+  capacity: 100,
+  active: true,
+  user: miriam,
+  photos: [photo1, photo2],
+)
 
-time = Time.new
+Category.create!([
+  { name: "Movements" },
+  { name: "Outdoors & Adventure" },
+  { name: "Tech" },
+  { name: "Family" },
+  { name: "Health & Wellness" },
+  { name: "Sports & Fitness" },
+  { name: "Learning" },
+  { name: "Photography" },
+  { name: "Food & Drink" },
+])
 
-event = Event.create!(name:"JS Meetup", description:"An event for JavaScript enthusiasts to meet up and code.", location:"Colon 58, 1B, 11100 Cadiz (Spain)", price:0.00, capacity:100, includes_food:true, includes_drinks:true, starts_at: time, ends_at: time, active:true, user:miriam, categories: [web_development])
-
-puts "Event Created"
+event = Event.find_by(name: "Monthly Yoga Weekend")
+event.categories << Category.find_by(name: "Outdoors & Adventure")
+event.categories << Category.find_by(name: "Sports & Fitness")
